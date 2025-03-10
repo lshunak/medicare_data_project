@@ -1,114 +1,156 @@
 # Medicare Data Engineering Pipeline
 
-A comprehensive data engineering project leveraging synthetic Medicare datasets (Enrollment, Fee-for-Service Claims, and Prescription Drug Events) to build a hybrid batch and streaming data platform.
+A data engineering project focused on processing and analyzing synthetic Medicare data files including beneficiary information, various claims types, and prescription drug events.
 
 ## Project Overview
 
-This project demonstrates a modern data engineering approach by implementing both batch and streaming pipelines, along with hybrid ETL/ELT transformation patterns, using Medicare healthcare data as the domain focus.
+This project develops a pipeline to process Medicare healthcare data files, beginning with batch processing of beneficiary, claims, and prescription drug data. The focus is on data exploration, understanding the structure of Medicare data, and building a foundation for more advanced analytics.
 
-### Project Goals
+### Current Project Goals
 
-- Build a scalable data platform capable of processing Medicare claims, enrollment, and prescription data
-- Implement both batch processing for historical analysis and stream processing for real-time insights
-- Demonstrate best practices in data engineering including data quality, testing, and monitoring
-- Create analytical models that provide healthcare-specific insights and metrics
-- Showcase both ETL and ELT patterns for different data transformation needs
+- Set up initial data ingestion for Medicare beneficiary, claims, and Part D files
+- Explore and document data structures of the Medicare files
+- Implement basic ETL processes for data cleaning and standardization
+- Create foundational data models for analysis
 
-### Key Performance Indicators (KPIs)
+### Optional Analytical Goals
 
-- **Technical KPIs**
-  - Pipeline reliability: 99.9% successful job runs
-  - Cost efficiency: Optimized resource utilization across batch/streaming
+1. **Demographics Analysis**
+   - Analyze beneficiary age distribution, gender ratios, and geographic distribution
+   - Identify demographic trends across different years (2015-2025)
+   - Visualize population health characteristics by region
 
-- **Business KPIs**
-  - Claims processing metrics: Average processing time, rejection rates
-  - Patient enrollment analysis: Coverage patterns, demographic distributions
-  - Prescription analysis: Dispensing patterns, cost trends
-  - Provider performance: Service utilization, cost efficiency
-  - Fraud detection: Anomaly identification rates, false positive reduction
+2. **Healthcare Utilization Patterns**
+   - Quantify service utilization rates across different claim types
+   - Analyze the relationship between demographics and service utilization
+   - Identify seasonal patterns in healthcare service usage
 
-## Architecture
+3. **Cost and Spending Analysis**
+   - Calculate average costs per beneficiary across different service categories
+   - Identify high-cost procedures and services
+   - Analyze cost variations by geographic region and provider type
 
-![Architecture Diagram](architecture/medicare_data_pipeline_architecture.png)
+4. **Chronic Condition Analysis**
+   - Identify prevalence of chronic conditions in the beneficiary population. Emphasis on diabetes as example
+   - Analyze healthcare utilization patterns for patients with specific conditions
+   - Explore the relationship between multiple chronic conditions and healthcare costs
 
+5. **Provider Performance Metrics**
+   - Develop metrics for provider efficiency and quality
+   - Compare utilization patterns across different provider types
+   - Identify outlier providers in terms of cost or service volume
 
-1. **Ingestion Layer**
-   - Batch ingestion of Medicare datasets
-   - Streaming simulation of real-time Medicare events
-   - Change data capture for incremental updates
+6. **Prescription Drug Analysis**
+   - Analyze prescription drug utilization and costs
+   - Identify frequently prescribed medications
+   - Examine relationships between diagnoses and prescription patterns
+   - Compare brand name versus generic drug usage
 
-2. **Storage Layer**
-   - Raw data zone (landing)
-   - Cleansed data zone (validated)
-   - Curated data zone (business entities)
+7. **Fraud Detection and Analysis**
+   - Identify unusual billing patterns and potential fraud indicators
+   - Flag unusual provider-beneficiary relationships
+   - Analyze geographic hotspots for suspicious activity
+   - Detect abnormal prescription patterns and drug combinations
+   - Develop risk scores for potential fraudulent activities
 
-3. **Processing Layer**
-   - Batch processing with ETL for initial cleansing
-   - Warehouse processing with ELT for analytics
-   - Stream processing for real-time insights
+## Available Data Files
 
-4. **Serving Layer**
-   - Data warehouse with dimensional models
-   - Real-time analytics dashboards
-   - API services for data access
+The project currently works with the following synthetic Medicare data files:
 
-### Data Flow
+### Beneficiary Files
+- Multiple yearly snapshots (2015-2025)
+- ~185 columns per file including demographics, eligibility, and enrollment data
 
-1. Medicare data is ingested through both batch and streaming pipelines
-2. Initial ETL processes clean and standardize the data
-3. Cleansed data is stored in the appropriate storage zone
-4. ELT processes transform data for specific analytical needs
-5. Transformed data is made available through the serving layer
+### Claims Files
+- `carrier.csv` - Professional services claims
+- `inpatient.csv` - Hospital inpatient claims 
+- `outpatient.csv` - Hospital outpatient claims
+- `dme.csv` - Durable Medical Equipment claims
+- `hha.csv` - Home Health Agency claims
+- `hospice.csv` - Hospice claims
+- `snf.csv` - Skilled Nursing Facility claims
 
-## Technologies
+### Part D (Prescription Drug) Files
+- `pde.csv` - Prescription Drug Events
+- Contains detailed information about medications, pharmacy dispensing, and drug costs
+- Links to beneficiary data via beneficiary identifiers
 
-| Component         | Technology Options          | Status |
-| ----------------- | --------------------------- | ------ |
-| Orchestration     | Apache Airflow              | TBD    |
-| Stream Processing | Apache Kafka, Kafka Streams | TBD    |
-| Batch Processing  | Apache Spark                | TBD    |
-| Storage           | S3                          | TBD    |
-| Warehouse         | Snowflake                   | TBD    |
-| Transformations   | dbt                         | TBD    |
-| Visualization     | Tableau, Power BI           | TBD    |
-| CI/CD             | GitHub Actions              | TBD    |
-| IaC               | Terraform                   | TBD    |
-| Monitoring        | Prometheus, Grafana         | TBD    |
-
-## Data Models
+## Data Structure
 
 ### Core Entities
 
-1. **Patient/Beneficiary**
-   - Demographics
+1. **Beneficiary**
+   - Demographics (age, gender, race)
+   - Geographic information (state, county, zip)
    - Enrollment periods
    - Coverage details
 
-2. **Provider**
-   - Specialties
-   - Locations
-   - Network affiliations
+2. **Claims**
+   - Various types (carrier, inpatient, outpatient, etc.)
+   - Service details
+   - Diagnosis and procedure codes
+   - Payment information
 
-3. **Claims**
-   - Header information
-   - Line items
-   - Diagnosis codes
-   - Procedure codes
+3. **Prescription Drugs**
+   - Drug identifiers (NDC codes)
+   - Dispensing information
+   - Quantity and days supply
+   - Payment and cost details
+   - Pharmacy and prescriber information
 
-4. **Prescriptions**
-   - Medications
-   - Dosages
-   - Pharmacy information
-   - Fill dates
+## Data Pipeline1: ELT Approach
+
+### Data Sources
+- Synthetic Medicare RIF (Research Identifiable Files) datasets in CSV format
+- Beneficiary enrollment data (yearly snapshots 2015-2025)
+- Claims data (carrier, inpatient, outpatient, DME, HHA, hospice, SNF)
+- Part D prescription drug events data
+
+### Target Systems
+- **Data Lake**: AWS S3 for raw data storage and organization
+- **Data Warehouse**: Snowflake for structured data storage and transformation
+
+### ELT Process
+
+1. **Extract**
+   - Pull Medicare CSV files from source locations
+   - Validate file structure and completeness
+   - Track extraction metadata (timestamps, file details)
+
+2. **Load**
+   - Load raw Medicare files directly into S3 data lake
+   - Organize by data category, year, and file type
+   - Maintain original data integrity
+
+3. **Transform**
+   - Perform transformations in Snowflake using dbt
+   - Create healthcare-specific data models:
+     * Beneficiary dimension
+     * Provider dimension
+     * Claims fact tables
+     * Prescription drug fact tables
+     * Medicare-specific analytical views
+   - Generate derived metrics and aggregations
 
 ## Getting Started
 
 ### Prerequisites
 
-- 
+- Python 3.8+
+- Pandas, NumPy for data processing
+- Jupyter notebooks for exploration
+- Storage space for Medicare data files (~1GB)
+
 ### Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/lshunak/medicare_data_project.git
 cd medicare_data_project
+
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
