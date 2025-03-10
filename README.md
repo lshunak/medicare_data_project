@@ -105,14 +105,10 @@ This project demonstrates a modern data engineering approach by implementing bot
 
 ### Prerequisites
 
-- [List prerequisites]
-
+- 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/medicare-data-pipeline.git
-cd medicare-data-pipeline
-
-# Set up environment
-# [Instructions for setting up the environment]
+git clone https://github.com/lshunak/medicare_data_project.git
+cd medicare_data_project
