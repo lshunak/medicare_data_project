@@ -931,3 +931,354 @@ Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicar
 [[34m2025-03-11T14:29:47.784+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
 [[34m2025-03-11T14:34:47.907+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
 [[34m2025-03-11T14:39:48.024+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T14:44:48.167+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T14:49:48.313+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T14:54:49.013+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T14:59:49.145+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:04:49.274+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:09:49.422+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:14:49.568+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:19:49.736+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:24:49.869+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:29:50.000+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:34:50.143+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:37:36.335+0200[0m] {[34mscheduler_job_runner.py:[0m413} INFO[0m - 1 tasks up for execution:
+	<TaskInstance: medicare_data_extract_s3.create_base_directory manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:37:36.335+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 0/16 running and queued tasks[0m
+[[34m2025-03-11T15:37:36.335+0200[0m] {[34mscheduler_job_runner.py:[0m592} INFO[0m - Setting the following tasks to queued state:
+	<TaskInstance: medicare_data_extract_s3.create_base_directory manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:37:36.336+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task create_base_directory because previous state change time has not been saved[0m
+[[34m2025-03-11T15:37:36.337+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='create_base_directory', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 14 and queue default[0m
+[[34m2025-03-11T15:37:36.337+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'create_base_directory', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:36.339+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'create_base_directory', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:37.011+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:37:37.111+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:37:37.152+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:37:37.153+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:37:37.256+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:37:37.350+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=create_base_directory permission to 509
+[[34m2025-03-11T15:37:37.602+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.create_base_directory manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:37:38.049+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='create_base_directory', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:37:38.051+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=create_base_directory, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:37:37.633288+00:00, run_end_date=2025-03-11 13:37:37.718105+00:00, run_duration=0.084817, state=success, executor_state=success, try_number=1, max_tries=1, job_id=40, pool=default_pool, queue=default, priority_weight=14, operator=BashOperator, queued_dttm=2025-03-11 13:37:36.335976+00:00, queued_by_job_id=1, pid=403864[0m
+[[34m2025-03-11T15:37:38.189+0200[0m] {[34mscheduler_job_runner.py:[0m413} INFO[0m - 1 tasks up for execution:
+	<TaskInstance: medicare_data_extract_s3.create_data_subdirectories manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:37:38.189+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 0/16 running and queued tasks[0m
+[[34m2025-03-11T15:37:38.189+0200[0m] {[34mscheduler_job_runner.py:[0m592} INFO[0m - Setting the following tasks to queued state:
+	<TaskInstance: medicare_data_extract_s3.create_data_subdirectories manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:37:38.190+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task create_data_subdirectories because previous state change time has not been saved[0m
+[[34m2025-03-11T15:37:38.190+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='create_data_subdirectories', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 13 and queue default[0m
+[[34m2025-03-11T15:37:38.190+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'create_data_subdirectories', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:38.192+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'create_data_subdirectories', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:38.777+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:37:38.861+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:37:38.896+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:37:38.896+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:37:38.985+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:37:39.079+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=create_data_subdirectories permission to 509
+[[34m2025-03-11T15:37:39.372+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.create_data_subdirectories manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:37:39.884+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='create_data_subdirectories', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:37:39.887+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=create_data_subdirectories, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:37:39.406853+00:00, run_end_date=2025-03-11 13:37:39.497490+00:00, run_duration=0.090637, state=success, executor_state=success, try_number=1, max_tries=1, job_id=41, pool=default_pool, queue=default, priority_weight=13, operator=BashOperator, queued_dttm=2025-03-11 13:37:38.189802+00:00, queued_by_job_id=1, pid=403937[0m
+[[34m2025-03-11T15:37:40.035+0200[0m] {[34mscheduler_job_runner.py:[0m413} INFO[0m - 3 tasks up for execution:
+	<TaskInstance: medicare_data_extract_s3.download_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.download_claims_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.download_part_d_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:37:40.035+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 0/16 running and queued tasks[0m
+[[34m2025-03-11T15:37:40.035+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 1/16 running and queued tasks[0m
+[[34m2025-03-11T15:37:40.035+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 2/16 running and queued tasks[0m
+[[34m2025-03-11T15:37:40.035+0200[0m] {[34mscheduler_job_runner.py:[0m592} INFO[0m - Setting the following tasks to queued state:
+	<TaskInstance: medicare_data_extract_s3.download_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.download_claims_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.download_part_d_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:37:40.036+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task download_beneficiary_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:37:40.036+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task download_claims_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:37:40.036+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task download_part_d_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:37:40.037+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='download_beneficiary_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 5 and queue default[0m
+[[34m2025-03-11T15:37:40.037+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'download_beneficiary_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:40.037+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='download_claims_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 5 and queue default[0m
+[[34m2025-03-11T15:37:40.037+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'download_claims_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:40.037+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='download_part_d_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 4 and queue default[0m
+[[34m2025-03-11T15:37:40.037+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'download_part_d_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:40.038+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'download_beneficiary_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:40.612+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:37:40.709+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:37:40.748+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:37:40.749+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:37:40.840+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:37:40.933+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=download_beneficiary_data permission to 509
+[[34m2025-03-11T15:37:41.206+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.download_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:37:45.712+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'download_claims_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:37:46.262+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:37:46.345+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:37:46.377+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:37:46.377+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:37:46.455+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:37:46.537+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=download_claims_data permission to 509
+[[34m2025-03-11T15:37:46.781+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.download_claims_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:39:07.715+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'download_part_d_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:39:08.384+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:39:08.468+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:39:08.501+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:39:08.502+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:39:08.584+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:39:08.673+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=download_part_d_data permission to 509
+[[34m2025-03-11T15:39:08.922+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.download_part_d_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:39:18.292+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='download_beneficiary_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:39:18.292+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='download_claims_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:39:18.292+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='download_part_d_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:39:18.295+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=download_beneficiary_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:37:41.239167+00:00, run_end_date=2025-03-11 13:37:45.374877+00:00, run_duration=4.13571, state=success, executor_state=success, try_number=1, max_tries=1, job_id=42, pool=default_pool, queue=default, priority_weight=5, operator=PythonOperator, queued_dttm=2025-03-11 13:37:40.036192+00:00, queued_by_job_id=1, pid=403984[0m
+[[34m2025-03-11T15:39:18.295+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=download_claims_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:37:46.805232+00:00, run_end_date=2025-03-11 13:39:07.357264+00:00, run_duration=80.552032, state=success, executor_state=success, try_number=1, max_tries=1, job_id=43, pool=default_pool, queue=default, priority_weight=5, operator=PythonOperator, queued_dttm=2025-03-11 13:37:40.036192+00:00, queued_by_job_id=1, pid=404125[0m
+[[34m2025-03-11T15:39:18.295+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=download_part_d_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:39:08.953571+00:00, run_end_date=2025-03-11 13:39:17.961884+00:00, run_duration=9.008313, state=success, executor_state=success, try_number=1, max_tries=1, job_id=44, pool=default_pool, queue=default, priority_weight=4, operator=PythonOperator, queued_dttm=2025-03-11 13:37:40.036192+00:00, queued_by_job_id=1, pid=406170[0m
+[[34m2025-03-11T15:39:18.306+0200[0m] {[34mmanager.py:[0m302} ERROR[0m - DagFileProcessorManager (PID=193862) last sent a heartbeat 98.29 seconds ago! Restarting it[0m
+[[34m2025-03-11T15:39:18.311+0200[0m] {[34mprocess_utils.py:[0m131} INFO[0m - Sending Signals.SIGTERM to group 193862. PIDs of all processes in the group: [193862][0m
+[[34m2025-03-11T15:39:18.311+0200[0m] {[34mprocess_utils.py:[0m86} INFO[0m - Sending the signal Signals.SIGTERM to group 193862[0m
+[[34m2025-03-11T15:39:18.403+0200[0m] {[34mprocess_utils.py:[0m79} INFO[0m - Process psutil.Process(pid=193862, status='terminated', exitcode=0, started='12:34:12') (193862) terminated with exit code 0[0m
+[[34m2025-03-11T15:39:18.407+0200[0m] {[34mmanager.py:[0m166} INFO[0m - Launched DagFileProcessorManager with pid: 406419[0m
+[[34m2025-03-11T15:39:18.411+0200[0m] {[34msettings.py:[0m61} INFO[0m - Configured default timezone Timezone('UTC')[0m
+[2025-03-11T15:39:18.423+0200] {manager.py:410} WARNING - Because we cannot use more than 1 thread (parsing_processes = 2) when using sqlite. So we set parallelism to 1.
+[[34m2025-03-11T15:39:18.654+0200[0m] {[34mscheduler_job_runner.py:[0m413} INFO[0m - 3 tasks up for execution:
+	<TaskInstance: medicare_data_extract_s3.extract_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.extract_claims_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.upload_part_d_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:39:18.654+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 0/16 running and queued tasks[0m
+[[34m2025-03-11T15:39:18.654+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 1/16 running and queued tasks[0m
+[[34m2025-03-11T15:39:18.655+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 2/16 running and queued tasks[0m
+[[34m2025-03-11T15:39:18.655+0200[0m] {[34mscheduler_job_runner.py:[0m592} INFO[0m - Setting the following tasks to queued state:
+	<TaskInstance: medicare_data_extract_s3.extract_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.extract_claims_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.upload_part_d_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:39:18.655+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task extract_beneficiary_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:39:18.655+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task extract_claims_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:39:18.655+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task upload_part_d_to_s3 because previous state change time has not been saved[0m
+[[34m2025-03-11T15:39:18.656+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='extract_beneficiary_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 4 and queue default[0m
+[[34m2025-03-11T15:39:18.656+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'extract_beneficiary_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:39:18.656+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='extract_claims_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 4 and queue default[0m
+[[34m2025-03-11T15:39:18.656+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'extract_claims_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:39:18.656+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='upload_part_d_to_s3', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 3 and queue default[0m
+[[34m2025-03-11T15:39:18.656+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'upload_part_d_to_s3', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:39:18.658+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'extract_beneficiary_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:39:19.264+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:39:19.359+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:39:19.397+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:39:19.397+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:39:19.482+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:39:19.581+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=extract_beneficiary_data permission to 509
+[[34m2025-03-11T15:39:19.850+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.extract_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:39:20.451+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'extract_claims_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:39:21.058+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:39:21.151+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:39:21.187+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:39:21.187+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:39:21.274+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:39:21.366+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=extract_claims_data permission to 509
+[[34m2025-03-11T15:39:21.634+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.extract_claims_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:39:23.892+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'upload_part_d_to_s3', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:39:24.483+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:39:24.578+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:39:24.615+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:39:24.616+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:39:24.701+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:39:24.801+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=upload_part_d_to_s3 permission to 509
+[[34m2025-03-11T15:39:25.082+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.upload_part_d_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:40:24.137+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='extract_beneficiary_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:40:24.137+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='extract_claims_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:40:24.137+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='upload_part_d_to_s3', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:40:24.141+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=extract_beneficiary_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:39:19.884865+00:00, run_end_date=2025-03-11 13:39:20.077884+00:00, run_duration=0.193019, state=success, executor_state=success, try_number=1, max_tries=1, job_id=45, pool=default_pool, queue=default, priority_weight=4, operator=PythonOperator, queued_dttm=2025-03-11 13:39:18.655351+00:00, queued_by_job_id=1, pid=406439[0m
+[[34m2025-03-11T15:40:24.141+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=extract_claims_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:39:21.663488+00:00, run_end_date=2025-03-11 13:39:23.500212+00:00, run_duration=1.836724, state=success, executor_state=success, try_number=1, max_tries=1, job_id=46, pool=default_pool, queue=default, priority_weight=4, operator=PythonOperator, queued_dttm=2025-03-11 13:39:18.655351+00:00, queued_by_job_id=1, pid=406483[0m
+[[34m2025-03-11T15:40:24.141+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=upload_part_d_to_s3, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:39:25.112145+00:00, run_end_date=2025-03-11 13:40:23.712648+00:00, run_duration=58.600503, state=success, executor_state=success, try_number=1, max_tries=1, job_id=47, pool=default_pool, queue=default, priority_weight=3, operator=PythonOperator, queued_dttm=2025-03-11 13:39:18.655351+00:00, queued_by_job_id=1, pid=406596[0m
+[[34m2025-03-11T15:40:24.152+0200[0m] {[34mmanager.py:[0m302} ERROR[0m - DagFileProcessorManager (PID=406419) last sent a heartbeat 65.52 seconds ago! Restarting it[0m
+[[34m2025-03-11T15:40:24.158+0200[0m] {[34mprocess_utils.py:[0m131} INFO[0m - Sending Signals.SIGTERM to group 406419. PIDs of all processes in the group: [406419][0m
+[[34m2025-03-11T15:40:24.158+0200[0m] {[34mprocess_utils.py:[0m86} INFO[0m - Sending the signal Signals.SIGTERM to group 406419[0m
+[[34m2025-03-11T15:40:24.250+0200[0m] {[34mprocess_utils.py:[0m79} INFO[0m - Process psutil.Process(pid=406419, status='terminated', exitcode=0, started='15:39:17') (406419) terminated with exit code 0[0m
+[[34m2025-03-11T15:40:24.254+0200[0m] {[34mmanager.py:[0m166} INFO[0m - Launched DagFileProcessorManager with pid: 407897[0m
+[[34m2025-03-11T15:40:24.258+0200[0m] {[34msettings.py:[0m61} INFO[0m - Configured default timezone Timezone('UTC')[0m
+[[34m2025-03-11T15:40:24.267+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:40:24.268+0200[0m] {[34mscheduler_job_runner.py:[0m1628} INFO[0m - Marked 1 SchedulerJob instances as failed[0m
+[2025-03-11T15:40:24.271+0200] {manager.py:410} WARNING - Because we cannot use more than 1 thread (parsing_processes = 2) when using sqlite. So we set parallelism to 1.
+[[34m2025-03-11T15:40:24.497+0200[0m] {[34mscheduler_job_runner.py:[0m413} INFO[0m - 3 tasks up for execution:
+	<TaskInstance: medicare_data_extract_s3.upload_beneficiary_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.upload_claims_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.cleanup_part_d_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:40:24.497+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 0/16 running and queued tasks[0m
+[[34m2025-03-11T15:40:24.497+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 1/16 running and queued tasks[0m
+[[34m2025-03-11T15:40:24.497+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 2/16 running and queued tasks[0m
+[[34m2025-03-11T15:40:24.497+0200[0m] {[34mscheduler_job_runner.py:[0m592} INFO[0m - Setting the following tasks to queued state:
+	<TaskInstance: medicare_data_extract_s3.upload_beneficiary_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.upload_claims_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.cleanup_part_d_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task upload_beneficiary_to_s3 because previous state change time has not been saved[0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task upload_claims_to_s3 because previous state change time has not been saved[0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task cleanup_part_d_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='upload_beneficiary_to_s3', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 3 and queue default[0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'upload_beneficiary_to_s3', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='upload_claims_to_s3', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 3 and queue default[0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'upload_claims_to_s3', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='cleanup_part_d_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 2 and queue default[0m
+[[34m2025-03-11T15:40:24.498+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'cleanup_part_d_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:40:24.500+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'upload_beneficiary_to_s3', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:40:25.080+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:40:25.166+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:40:25.202+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:40:25.202+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:40:25.276+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:40:25.362+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=upload_beneficiary_to_s3 permission to 509
+[[34m2025-03-11T15:40:25.677+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.upload_beneficiary_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:40:47.758+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'upload_claims_to_s3', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:40:48.323+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:40:48.406+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:40:48.436+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:40:48.437+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:40:48.515+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:40:48.607+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=upload_claims_to_s3 permission to 509
+[[34m2025-03-11T15:40:48.848+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.upload_claims_to_s3 manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:45:19.183+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'cleanup_part_d_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:45:19.719+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:45:19.798+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:45:19.828+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:45:19.829+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:45:19.904+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:45:19.990+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=cleanup_part_d_data permission to 509
+[[34m2025-03-11T15:45:20.237+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.cleanup_part_d_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:45:20.667+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='upload_beneficiary_to_s3', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:45:20.667+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='upload_claims_to_s3', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:45:20.668+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='cleanup_part_d_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:45:20.670+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=cleanup_part_d_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:45:20.260753+00:00, run_end_date=2025-03-11 13:45:20.338266+00:00, run_duration=0.077513, state=success, executor_state=success, try_number=1, max_tries=1, job_id=50, pool=default_pool, queue=default, priority_weight=1, operator=PythonOperator, queued_dttm=2025-03-11 13:40:24.497761+00:00, queued_by_job_id=1, pid=414956[0m
+[[34m2025-03-11T15:45:20.670+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=upload_beneficiary_to_s3, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:40:25.701556+00:00, run_end_date=2025-03-11 13:40:47.428402+00:00, run_duration=21.726846, state=success, executor_state=success, try_number=1, max_tries=1, job_id=48, pool=default_pool, queue=default, priority_weight=3, operator=PythonOperator, queued_dttm=2025-03-11 13:40:24.497761+00:00, queued_by_job_id=1, pid=407942[0m
+[[34m2025-03-11T15:45:20.670+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=upload_claims_to_s3, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:40:48.876998+00:00, run_end_date=2025-03-11 13:45:18.801789+00:00, run_duration=269.924791, state=success, executor_state=success, try_number=1, max_tries=1, job_id=49, pool=default_pool, queue=default, priority_weight=3, operator=PythonOperator, queued_dttm=2025-03-11 13:40:24.497761+00:00, queued_by_job_id=1, pid=408435[0m
+[[34m2025-03-11T15:45:20.681+0200[0m] {[34mmanager.py:[0m302} ERROR[0m - DagFileProcessorManager (PID=407897) last sent a heartbeat 296.20 seconds ago! Restarting it[0m
+[[34m2025-03-11T15:45:20.686+0200[0m] {[34mprocess_utils.py:[0m131} INFO[0m - Sending Signals.SIGTERM to group 407897. PIDs of all processes in the group: [407897][0m
+[[34m2025-03-11T15:45:20.686+0200[0m] {[34mprocess_utils.py:[0m86} INFO[0m - Sending the signal Signals.SIGTERM to group 407897[0m
+[[34m2025-03-11T15:45:20.778+0200[0m] {[34mprocess_utils.py:[0m79} INFO[0m - Process psutil.Process(pid=407897, status='terminated', exitcode=0, started='15:40:23') (407897) terminated with exit code 0[0m
+[[34m2025-03-11T15:45:20.781+0200[0m] {[34mmanager.py:[0m166} INFO[0m - Launched DagFileProcessorManager with pid: 414957[0m
+[[34m2025-03-11T15:45:20.785+0200[0m] {[34msettings.py:[0m61} INFO[0m - Configured default timezone Timezone('UTC')[0m
+[2025-03-11T15:45:20.796+0200] {manager.py:410} WARNING - Because we cannot use more than 1 thread (parsing_processes = 2) when using sqlite. So we set parallelism to 1.
+[[34m2025-03-11T15:45:20.997+0200[0m] {[34mscheduler_job_runner.py:[0m413} INFO[0m - 3 tasks up for execution:
+	<TaskInstance: medicare_data_extract_s3.cleanup_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.cleanup_claims_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.catalog_medicare_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:45:20.997+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 0/16 running and queued tasks[0m
+[[34m2025-03-11T15:45:20.997+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 1/16 running and queued tasks[0m
+[[34m2025-03-11T15:45:20.997+0200[0m] {[34mscheduler_job_runner.py:[0m476} INFO[0m - DAG medicare_data_extract_s3 has 2/16 running and queued tasks[0m
+[[34m2025-03-11T15:45:20.997+0200[0m] {[34mscheduler_job_runner.py:[0m592} INFO[0m - Setting the following tasks to queued state:
+	<TaskInstance: medicare_data_extract_s3.cleanup_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.cleanup_claims_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>
+	<TaskInstance: medicare_data_extract_s3.catalog_medicare_data manual__2025-03-11T13:37:35.838716+00:00 [scheduled]>[0m
+[[34m2025-03-11T15:45:20.998+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task cleanup_beneficiary_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:45:20.998+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task cleanup_claims_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:45:20.998+0200[0m] {[34mtaskinstance.py:[0m1441} WARNING[0m - cannot record scheduled_duration for task catalog_medicare_data because previous state change time has not been saved[0m
+[[34m2025-03-11T15:45:20.999+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='cleanup_beneficiary_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 2 and queue default[0m
+[[34m2025-03-11T15:45:20.999+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'cleanup_beneficiary_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:45:20.999+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='cleanup_claims_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 2 and queue default[0m
+[[34m2025-03-11T15:45:20.999+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'cleanup_claims_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:45:20.999+0200[0m] {[34mscheduler_job_runner.py:[0m635} INFO[0m - Sending TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='catalog_medicare_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1) to executor with priority 1 and queue default[0m
+[[34m2025-03-11T15:45:20.999+0200[0m] {[34mbase_executor.py:[0m146} INFO[0m - Adding to queue: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'catalog_medicare_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:45:21.001+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'cleanup_beneficiary_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:45:21.524+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:45:21.639+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:45:21.699+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:45:21.700+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:45:21.790+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:45:21.866+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=cleanup_beneficiary_data permission to 509
+[[34m2025-03-11T15:45:22.110+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.cleanup_beneficiary_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:45:22.514+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'cleanup_claims_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:45:23.064+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:45:23.141+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:45:23.176+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:45:23.176+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:45:23.268+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:45:23.409+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=cleanup_claims_data permission to 509
+[[34m2025-03-11T15:45:23.748+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.cleanup_claims_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:45:24.286+0200[0m] {[34msequential_executor.py:[0m74} INFO[0m - Executing command: ['airflow', 'tasks', 'run', 'medicare_data_extract_s3', 'catalog_medicare_data', 'manual__2025-03-11T13:37:35.838716+00:00', '--local', '--subdir', 'DAGS_FOLDER/medicare_data_download_dag.py'][0m
+[[34m2025-03-11T15:45:24.876+0200[0m] {[34mdagbag.py:[0m536} INFO[0m - Filling up the DagBag from /home/liran/Documents/medicare_data_project/airflow/dags/medicare_data_download_dag.py[0m
+[[34m2025-03-11T15:45:24.968+0200[0m] {[34mexample_kubernetes_executor.py:[0m38} WARNING[0m - The example_kubernetes_executor example DAG requires the kubernetes provider. Please install it with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:45:25.003+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m39} WARNING[0m - Could not import DAGs in example_local_kubernetes_executor.py[0m
+Traceback (most recent call last):
+  File "/home/liran/Documents/medicare_data_project/medicare-env/lib/python3.10/site-packages/airflow/example_dags/example_local_kubernetes_executor.py", line 37, in <module>
+    from kubernetes.client import models as k8s
+ModuleNotFoundError: No module named 'kubernetes'
+[[34m2025-03-11T15:45:25.003+0200[0m] {[34mexample_local_kubernetes_executor.py:[0m40} WARNING[0m - Install Kubernetes dependencies with: pip install apache-airflow[cncf.kubernetes][0m
+[[34m2025-03-11T15:45:25.091+0200[0m] {[34mtutorial_taskflow_api_virtualenv.py:[0m29} WARNING[0m - The tutorial_taskflow_api_virtualenv example DAG requires virtualenv, please install it.[0m
+[[34m2025-03-11T15:45:25.189+0200[0m] {[34mexample_python_operator.py:[0m86} WARNING[0m - The virtalenv_python example task requires virtualenv, please install it.[0m
+Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicare_data_extract_s3/run_id=manual__2025-03-11T13:37:35.838716+00:00/task_id=catalog_medicare_data permission to 509
+[[34m2025-03-11T15:45:25.434+0200[0m] {[34mtask_command.py:[0m416} INFO[0m - Running <TaskInstance: medicare_data_extract_s3.catalog_medicare_data manual__2025-03-11T13:37:35.838716+00:00 [queued]> on host liran-Zenbook[0m
+[[34m2025-03-11T15:47:41.789+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='cleanup_beneficiary_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:47:41.789+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='cleanup_claims_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:47:41.789+0200[0m] {[34mscheduler_job_runner.py:[0m685} INFO[0m - Received executor event with state success for task instance TaskInstanceKey(dag_id='medicare_data_extract_s3', task_id='catalog_medicare_data', run_id='manual__2025-03-11T13:37:35.838716+00:00', try_number=1, map_index=-1)[0m
+[[34m2025-03-11T15:47:41.792+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=catalog_medicare_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:45:25.466611+00:00, run_end_date=2025-03-11 13:47:41.464541+00:00, run_duration=135.99793, state=success, executor_state=success, try_number=1, max_tries=1, job_id=53, pool=default_pool, queue=default, priority_weight=1, operator=GlueCrawlerOperator, queued_dttm=2025-03-11 13:45:20.998095+00:00, queued_by_job_id=1, pid=415126[0m
+[[34m2025-03-11T15:47:41.792+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=cleanup_beneficiary_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:45:22.139340+00:00, run_end_date=2025-03-11 13:45:22.224003+00:00, run_duration=0.084663, state=success, executor_state=success, try_number=1, max_tries=1, job_id=51, pool=default_pool, queue=default, priority_weight=1, operator=PythonOperator, queued_dttm=2025-03-11 13:45:20.998095+00:00, queued_by_job_id=1, pid=415025[0m
+[[34m2025-03-11T15:47:41.792+0200[0m] {[34mscheduler_job_runner.py:[0m722} INFO[0m - TaskInstance Finished: dag_id=medicare_data_extract_s3, task_id=cleanup_claims_data, run_id=manual__2025-03-11T13:37:35.838716+00:00, map_index=-1, run_start_date=2025-03-11 13:45:23.775251+00:00, run_end_date=2025-03-11 13:45:23.943240+00:00, run_duration=0.167989, state=success, executor_state=success, try_number=1, max_tries=1, job_id=52, pool=default_pool, queue=default, priority_weight=1, operator=PythonOperator, queued_dttm=2025-03-11 13:45:20.998095+00:00, queued_by_job_id=1, pid=415105[0m
+[[34m2025-03-11T15:47:41.803+0200[0m] {[34mmanager.py:[0m302} ERROR[0m - DagFileProcessorManager (PID=414957) last sent a heartbeat 140.83 seconds ago! Restarting it[0m
+[[34m2025-03-11T15:47:41.807+0200[0m] {[34mprocess_utils.py:[0m131} INFO[0m - Sending Signals.SIGTERM to group 414957. PIDs of all processes in the group: [414957][0m
+[[34m2025-03-11T15:47:41.807+0200[0m] {[34mprocess_utils.py:[0m86} INFO[0m - Sending the signal Signals.SIGTERM to group 414957[0m
+[[34m2025-03-11T15:47:41.899+0200[0m] {[34mprocess_utils.py:[0m79} INFO[0m - Process psutil.Process(pid=414957, status='terminated', exitcode=0, started='15:45:19') (414957) terminated with exit code 0[0m
+[[34m2025-03-11T15:47:41.904+0200[0m] {[34mmanager.py:[0m166} INFO[0m - Launched DagFileProcessorManager with pid: 417964[0m
+[[34m2025-03-11T15:47:41.908+0200[0m] {[34msettings.py:[0m61} INFO[0m - Configured default timezone Timezone('UTC')[0m
+[[34m2025-03-11T15:47:41.918+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[2025-03-11T15:47:41.919+0200] {manager.py:410} WARNING - Because we cannot use more than 1 thread (parsing_processes = 2) when using sqlite. So we set parallelism to 1.
+[[34m2025-03-11T15:47:41.920+0200[0m] {[34mscheduler_job_runner.py:[0m1628} INFO[0m - Marked 1 SchedulerJob instances as failed[0m
+[[34m2025-03-11T15:47:42.109+0200[0m] {[34mdagrun.py:[0m653} INFO[0m - Marking run <DagRun medicare_data_extract_s3 @ 2025-03-11 13:37:35.838716+00:00: manual__2025-03-11T13:37:35.838716+00:00, state:running, queued_at: 2025-03-11 13:37:35.847816+00:00. externally triggered: True> successful[0m
+[[34m2025-03-11T15:47:42.109+0200[0m] {[34mdagrun.py:[0m704} INFO[0m - DagRun Finished: dag_id=medicare_data_extract_s3, execution_date=2025-03-11 13:37:35.838716+00:00, run_id=manual__2025-03-11T13:37:35.838716+00:00, run_start_date=2025-03-11 13:37:36.314243+00:00, run_end_date=2025-03-11 13:47:42.109550+00:00, run_duration=605.795307, state=success, external_trigger=True, run_type=manual, data_interval_start=2025-03-11 13:37:35.838716+00:00, data_interval_end=2025-03-11 13:37:35.838716+00:00, dag_hash=e26c25dff9b329519f203a6c7783302a[0m

@@ -14,7 +14,7 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
 from airflow.utils.dates import days_ago
-
+from airflow.providers.amazon.aws.operators.glue_crawler import GlueCrawlerOperator
 import os
 import requests
 import logging
@@ -409,14 +409,30 @@ with DAG(
         trigger_rule='all_success',  # Only run if upload succeeds
     )
 
+    catalog_all_data = GlueCrawlerOperator(
+        task_id='catalog_medicare_data',
+        aws_conn_id='aws_default',
+        config={
+            'Name': 'medicare_data_crawler',
+            'Role': 'AWSGlueServiceRole-MedicareCatalog',
+            'DatabaseName': 'medicare_catalog',
+            'Targets': {
+                'S3Targets': [
+                    {'Path': f's3://{S3_BUCKET}/raw/'},  # This will crawl all subdirectories
+                ]
+            }
+        }
+    )
+
     # Define task dependencies
     create_base_dir >> create_subdirs
     
     # Beneficiary workflow
-    create_subdirs >> download_beneficiary >> extract_beneficiary >> upload_beneficiary >> cleanup_beneficiary
+    create_subdirs >> download_beneficiary >> extract_beneficiary >> upload_beneficiary >> [cleanup_beneficiary, catalog_all_data]
     
     # Claims workflow
-    create_subdirs >> download_claims >> extract_claims >> upload_claims >> cleanup_claims
+    create_subdirs >> download_claims >> extract_claims >> upload_claims >> [cleanup_claims, catalog_all_data]
     
     # Part D workflow (direct CSV, no extraction needed)
-    create_subdirs >> download_part_d >> upload_part_d >> cleanup_part_d
+    create_subdirs >> download_part_d >> upload_part_d >> [cleanup_part_d, catalog_all_data]
+    

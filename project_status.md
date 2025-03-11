@@ -22,7 +22,7 @@
 ## Next Steps
 - [ ] Implement data lake architecture
   - ✅ Configure S3 as landing zone (already done)
-  - [ ] Set up AWS Glue catalog for schema discovery
+  - ✅ Set up AWS Glue catalog for schema discovery
   - [ ] Create Athena views for ad-hoc analysis
   - [ ] Implement data partitioning strategy
 - [ ] Create data warehouse schema (Redshift/Snowflake)
