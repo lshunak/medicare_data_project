@@ -95,7 +95,9 @@ def extract_zip(zip_path, extract_dir, **kwargs):
         for root, _, files in os.walk(extract_dir):
             for file in files:
                 file_path = os.path.join(root, file)
-                extracted_files.append(file_path)
+                # Skip the original zip file in the list of extracted files
+                if file_path != zip_path:
+                    extracted_files.append(file_path)
         
         logger.info(f"Successfully extracted {len(extracted_files)} files")
         
@@ -118,6 +120,11 @@ def upload_files_to_s3(files, s3_prefix, **kwargs):
             base_name = os.path.basename(file_path)
             s3_key = f"{s3_prefix}{base_name}"
             
+            # Skip uploading zip files
+            if base_name.endswith('.zip'):
+                logger.info(f"Skipping upload of ZIP file: {file_path}")
+                continue
+                
             logger.info(f"Uploading {file_path} to s3://{S3_BUCKET}/{s3_key}")
             
             # Upload file with metadata
@@ -176,6 +183,30 @@ def upload_beneficiary_to_s3(**kwargs):
     # Upload files to S3
     return upload_files_to_s3(files, s3_prefix)
 
+def cleanup_beneficiary_data(**kwargs):
+    """Clean up beneficiary data after successful S3 upload"""
+    source = DATA_SOURCES['beneficiary']
+    output_dir = os.path.join(BASE_DIR, source['local_path'])
+    
+    logger.info(f"Cleaning up local data in {output_dir}")
+    
+    # Count files before deletion
+    file_count = sum(len(files) for _, _, files in os.walk(output_dir))
+    
+    try:
+        # Remove all files in the directory but keep the directory itself
+        for root, dirs, files in os.walk(output_dir):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+                logger.info(f"Removed file: {file_path}")
+        
+        logger.info(f"Successfully cleaned up {file_count} files in {output_dir}")
+        return file_count
+    except Exception as e:
+        logger.error(f"Error cleaning up {output_dir}: {str(e)}")
+        raise
+
 def download_claims_data(**kwargs):
     """Download Claims data zip file"""
     source = DATA_SOURCES['claims']
@@ -214,6 +245,28 @@ def upload_claims_to_s3(**kwargs):
     # Upload files to S3
     return upload_files_to_s3(files, s3_prefix)
 
+def cleanup_claims_data(**kwargs):
+    """Clean up claims data after successful S3 upload"""
+    source = DATA_SOURCES['claims']
+    output_dir = os.path.join(BASE_DIR, source['local_path'])
+    
+    logger.info(f"Cleaning up local data in {output_dir}")
+    
+    file_count = sum(len(files) for _, _, files in os.walk(output_dir))
+    
+    try:
+        for root, dirs, files in os.walk(output_dir):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+                logger.info(f"Removed file: {file_path}")
+        
+        logger.info(f"Successfully cleaned up {file_count} files in {output_dir}")
+        return file_count
+    except Exception as e:
+        logger.error(f"Error cleaning up {output_dir}: {str(e)}")
+        raise
+
 def download_part_d_data(**kwargs):
     """Download Part D data CSV file"""
     source = DATA_SOURCES['part_d']
@@ -236,6 +289,30 @@ def upload_part_d_to_s3(**kwargs):
     
     # Upload file to S3
     return upload_files_to_s3([file_path], s3_prefix)
+
+def cleanup_part_d_data(**kwargs):
+    """Clean up Part D data after successful S3 upload"""
+    source = DATA_SOURCES['part_d']
+    output_dir = os.path.join(BASE_DIR, source['local_path'])
+    
+    logger.info(f"Cleaning up local data in {output_dir}")
+    
+    # Count files before deletion
+    file_count = sum(len(files) for _, _, files in os.walk(output_dir))
+    
+    try:
+        # Remove all files in the directory but keep the directory itself
+        for root, dirs, files in os.walk(output_dir):
+            for file in files:
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+                logger.info(f"Removed file: {file_path}")
+        
+        logger.info(f"Successfully cleaned up {file_count} files in {output_dir}")
+        return file_count
+    except Exception as e:
+        logger.error(f"Error cleaning up {output_dir}: {str(e)}")
+        raise
 
 # Define default arguments
 default_args = {
@@ -285,6 +362,12 @@ with DAG(
         task_id='upload_beneficiary_to_s3',
         python_callable=upload_beneficiary_to_s3,
     )
+    
+    cleanup_beneficiary = PythonOperator(
+        task_id='cleanup_beneficiary_data',
+        python_callable=cleanup_beneficiary_data,
+        trigger_rule='all_success',  # Only run if upload succeeds
+    )
 
     # Claims data tasks
     download_claims = PythonOperator(
@@ -301,6 +384,12 @@ with DAG(
         task_id='upload_claims_to_s3',
         python_callable=upload_claims_to_s3,
     )
+    
+    cleanup_claims = PythonOperator(
+        task_id='cleanup_claims_data',
+        python_callable=cleanup_claims_data,
+        trigger_rule='all_success',  # Only run if upload succeeds
+    )
 
     # Part D data tasks
     download_part_d = PythonOperator(
@@ -312,15 +401,22 @@ with DAG(
         task_id='upload_part_d_to_s3',
         python_callable=upload_part_d_to_s3,
     )
+    
+    # Add cleanup task
+    cleanup_part_d = PythonOperator(
+        task_id='cleanup_part_d_data',
+        python_callable=cleanup_part_d_data,
+        trigger_rule='all_success',  # Only run if upload succeeds
+    )
 
     # Define task dependencies
     create_base_dir >> create_subdirs
     
     # Beneficiary workflow
-    create_subdirs >> download_beneficiary >> extract_beneficiary >> upload_beneficiary
+    create_subdirs >> download_beneficiary >> extract_beneficiary >> upload_beneficiary >> cleanup_beneficiary
     
     # Claims workflow
-    create_subdirs >> download_claims >> extract_claims >> upload_claims
+    create_subdirs >> download_claims >> extract_claims >> upload_claims >> cleanup_claims
     
     # Part D workflow (direct CSV, no extraction needed)
-    create_subdirs >> download_part_d >> upload_part_d
+    create_subdirs >> download_part_d >> upload_part_d >> cleanup_part_d
