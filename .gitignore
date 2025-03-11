@@ -1,8 +1,9 @@
+# Data directories
+data/raw/
+data/processed/
+data/temp/
 
-Here's a basic `.gitignore` file to get you started:
-
-```text name=.gitignore
-# Python
+# Python artifacts
 __pycache__/
 *.py[cod]
 *$py.class
@@ -27,11 +28,11 @@ var/
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# Virtual Environment
+# Virtual environments
 venv/
 ENV/
 
-# IDE
+# IDE specific files
 .idea/
 .vscode/
 *.swp
