@@ -10,7 +10,7 @@
 - ✅ Medicare data extract DAG created and tested
 - ✅ S3 upload functionality confirmed working
 - ✅ Added local data cleanup after successful upload
-- 🔄 Data cataloging implementation in progress
+- 🔄 Data cataloging implementation 
 
 ## S3 Bucket Organization
 - **Bucket Name**: lshunak-cms-bucket

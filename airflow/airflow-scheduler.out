@@ -1282,3 +1282,25 @@ Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicar
 [[34m2025-03-11T15:47:41.920+0200[0m] {[34mscheduler_job_runner.py:[0m1628} INFO[0m - Marked 1 SchedulerJob instances as failed[0m
 [[34m2025-03-11T15:47:42.109+0200[0m] {[34mdagrun.py:[0m653} INFO[0m - Marking run <DagRun medicare_data_extract_s3 @ 2025-03-11 13:37:35.838716+00:00: manual__2025-03-11T13:37:35.838716+00:00, state:running, queued_at: 2025-03-11 13:37:35.847816+00:00. externally triggered: True> successful[0m
 [[34m2025-03-11T15:47:42.109+0200[0m] {[34mdagrun.py:[0m704} INFO[0m - DagRun Finished: dag_id=medicare_data_extract_s3, execution_date=2025-03-11 13:37:35.838716+00:00, run_id=manual__2025-03-11T13:37:35.838716+00:00, run_start_date=2025-03-11 13:37:36.314243+00:00, run_end_date=2025-03-11 13:47:42.109550+00:00, run_duration=605.795307, state=success, external_trigger=True, run_type=manual, data_interval_start=2025-03-11 13:37:35.838716+00:00, data_interval_end=2025-03-11 13:37:35.838716+00:00, dag_hash=e26c25dff9b329519f203a6c7783302a[0m
+[[34m2025-03-11T15:52:42.082+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T15:57:42.261+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:02:42.417+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:07:42.578+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:12:42.728+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:17:42.747+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:22:42.921+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:27:43.295+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:32:43.456+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:37:43.607+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:42:43.643+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:47:43.813+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:52:43.989+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T16:57:44.160+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T17:02:44.321+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T17:11:09.963+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T17:16:10.093+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T17:21:10.224+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T17:26:10.362+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T17:31:10.493+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T17:36:10.628+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-11T17:41:10.760+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m

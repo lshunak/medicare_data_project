@@ -1,17 +1,47 @@
 # Medicare Data Engineering Pipeline
 
-A data engineering project focused on processing and analyzing synthetic Medicare data files including beneficiary information, various claims types, and prescription drug events.
+A data engineering project focused on processing and analyzing synthetic Medicare data files.
 
 ## Project Overview
 
-This project develops a pipeline to process Medicare healthcare data files, beginning with batch processing of beneficiary, claims, and prescription drug data. The focus is on data exploration, understanding the structure of Medicare data, and building a foundation for more advanced analytics.
+This project implements an ELT (Extract, Load, Transform) pipeline for Medicare healthcare data using Apache Airflow, AWS S3, and data cataloging. The pipeline efficiently processes beneficiary (patient) data, claims data, and prescription drug events.
 
-### Current Project Goals
 
-- Set up initial data ingestion for Medicare beneficiary, claims, and Part D files
-- Explore and document data structures of the Medicare files
-- Implement basic ETL processes for data cleaning and standardization
-- Create foundational data models for analysis
+## Project Structure
+
+### Data Pipeline Architecture
+- 🔄 need to add *proper* diagram
+
+┌─────────┐         ┌───────────┐         ┌───────────┐
+│ CMS.gov │────────►│  Airflow  │────────►│  AWS S3   │
+└─────────┘         │  (Python) │         └─────┬─────┘
+                    └───────────┘               │
+                                                ▼
+┌────────────┐      ┌───────────┐         ┌───────────┐
+│            │◄─────┤ Snowflake │◄────────┤ AWS Glue  │
+│ Dashboard  │      │           │         │  Catalog  │
+└────────────┘      └───────────┘         └───────────┘
+
+## Implementation Status
+
+- ✅ Airflow DAG setup and configuration
+- ✅ Data extraction from source
+- ✅ S3 upload functionality
+- ✅ Local file cleanup after upload
+- ✅ AWS Glue cataloging (in progress)
+- ⬜ Data transformation layer
+- ⬜ Analytics and dashboard implementation
+
+## Next Steps
+
+1. Complete AWS Glue cataloging implementation
+2. Set up Athena for SQL-based data exploration
+3. Evaluate data warehouse options (Redshift vs. Snowflake)
+4. Implement data transformation layer
+5. Create analytical dashboards
+
+## From now here it's more "association sun"
+
 
 ### Optional Analytical Goals
 
