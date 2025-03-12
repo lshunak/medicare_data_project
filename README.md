@@ -12,9 +12,6 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 - Gain experience with data tools such as Airflow, Snowflake, and DBT
 - Implement advanced queries on the data to draw meaningful conclusions, both in healthcare and business-oriented questions
 
-## Data Pipeline Architecture
-
-![Medicare Data Pipeline Architecture](docs/images/project_design.png)
 
 ## Optional Technical Goals
 - Implement data streaming for real-time data processing
@@ -31,6 +28,34 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
    - Prescription drug analysis
    - Optional: Fraud detection and analysis (if streaming is implemented)
 
+## Data Pipeline Architecture
+
+![Medicare Data Pipeline Architecture](docs/images/project_design.png)
+
+## Data Pipeline: ELT Approach
+
+### Extract and Catalog
+
+- Source: Synthetic Medicare files from CMS.gov
+- Process: Automated download via Airflow
+- Validation: File integrity and structure verification
+- intermediate storage: Local filesystem
+- Destination: AWS S3 data lake
+- Cataloging: AWS Glue for schema discovery
+  
+### Load
+- Platform: Snowflake
+- Approach: Batch loading from S3
+- Schema creation - columns names translation
+- Goals: Efficient data loading, schema consistency, data quality checks
+  
+
+### Transform
+
+- Platform: Snowflake with dbt
+- Approach: SQL-based transformations
+- Goals: Data quality checks, schema consistency, analytics-ready tables
+
 ## Implementation Status   
    
 - ✅ Airflow DAG setup and configuration
@@ -41,8 +66,10 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 - ⬜ Data loading to warehouse
 - ⬜ Data transformation layer
 - ⬜ Analytics and dashboard implementation
-  
-## Next Steps
+- ⬜ Containerization and deployment
+- ⬜ Optional: Data streaming setup
+
+## Next coming Steps
 
 1. Set up Athena for SQL-based data exploration
 2. Study Snowflake as data warehouse
@@ -51,12 +78,7 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 5. Create analytical dashboards
 
 
-
-## From now here it's more "association sun"
-
-
-
-## Available Data Files
+## Data Files
 
 The project works with synthetic Medicare data files from CMS that simulate real-world healthcare data:
 
@@ -64,7 +86,8 @@ The project works with synthetic Medicare data files from CMS that simulate real
 
 - **Content**: Patient demographic and enrollment information
 - **Time span**: Multiple yearly snapshots (2015-2025)
-- **Scale**: ~185 columns per file
+- **Format**: CSV files with patient identifiers
+- **Scale**: ~185 columns per file, thousands of rows per year
 - **Key information**: Demographics, eligibility periods, coverage details
 
 ### Claims Data
@@ -108,29 +131,6 @@ Contains medical service claims across different healthcare settings:
    - Cost breakdown (patient/insurance portions)
    - Prescriber and pharmacy information
 
-## Data Pipeline: ELT Approach
-
-### Extract
-
-- Source: Synthetic Medicare files from CMS.gov
-- Process: Automated download via Airflow
-- Validation: File integrity and structure verification
-
-### Load
-
-- Target: AWS S3 data lake
-- Organization: Structured by data domain and type
-- Format: Original files preserved for maximum flexibility
-
-### Transform
-
-- Platform: Snowflake with dbt
-- Approach: SQL-based transformations
-- Models:
-  - Dimensional models (patients, providers, time)
-  - Fact tables (claims, prescriptions)
-  - Analytical views for specific use cases
-
 ## Getting Started
 
 ### Prerequisites
@@ -142,14 +142,16 @@ Contains medical service claims across different healthcare settings:
 
 ### Installation
 
+Clone the repository
 ```bash
-# Clone the repository
 git clone https://github.com/lshunak/medicare_data_project.git
 cd medicare_data_project
-
-# Create and activate a virtual environment
+```
+Create and activate a virtual environment
+```bash
 python -m venv venv
 source venv/bin/activate
-
-# Install dependencies
+```
+Install dependencies
+```bash
 pip install -r requirements.txt
