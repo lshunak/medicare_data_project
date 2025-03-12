@@ -1372,3 +1372,6 @@ Changing /home/liran/Documents/medicare_data_project/airflow/logs/dag_id=medicar
 [[34m2025-03-12T13:42:32.882+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
 [[34m2025-03-12T13:47:33.026+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
 [[34m2025-03-12T13:52:33.062+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-12T13:57:33.214+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-12T14:02:33.355+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
+[[34m2025-03-12T14:07:33.456+0200[0m] {[34mscheduler_job_runner.py:[0m1605} INFO[0m - Adopting or resetting orphaned tasks for active dag runs[0m
