@@ -16,6 +16,21 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 
 ![Medicare Data Pipeline Architecture](docs/images/project_design.png)
 
+## Optional technical goals
+- Implement data streaming for real-time data processing
+
+## Analytical Goals
+- Analyze demographic trends in Medicare patients population.
+   - Age distribution
+   - Optional: Location distribution
+- Idwntify health related trends in the population
+   - Common Chronic conditions
+   - Optional: Healthcare utilization patterns
+- Business oriented analysis
+   - Cost and spending analysis
+   - Prescription drug analysis
+   - Optional: Fraud detection and analysis (if streaming is implemented)
+
 ## Implementation Status
 
 - ✅ Airflow DAG setup and configuration
@@ -29,12 +44,12 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
   
 ## Next Steps
 
-1. Complete AWS Glue cataloging implementation
-2. Set up Athena for SQL-based data exploration
-3. Study Snowflake as data warehouse
-4. Implement load to warehouse
-5. Implement data transformation layer
-6. Create analytical dashboards
+1. Set up Athena for SQL-based data exploration
+2. Study Snowflake as data warehouse
+3. Implement load to warehouse
+4. Implement data transformation layer
+5. Create analytical dashboards
+
 
 
 ## From now here it's more "association sun"
