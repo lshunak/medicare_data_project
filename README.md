@@ -7,20 +7,10 @@ A data engineering project focused on processing and analyzing synthetic Medicar
 This project implements an ELT (Extract, Load, Transform) pipeline for Medicare healthcare data using Apache Airflow, AWS S3, and data cataloging. The pipeline efficiently processes beneficiary (patient) data, claims data, and prescription drug events.
 
 
-## Project Structure
+## Data Pipeline Architecture
 
-### Data Pipeline Architecture
-- 🔄 need to add *proper* diagram
+![Medicare Data Pipeline Architecture](docs/images/project_design.png)
 
-┌─────────┐         ┌───────────┐         ┌───────────┐
-│ CMS.gov │────────►│  Airflow  │────────►│  AWS S3   │
-└─────────┘         │  (Python) │         └─────┬─────┘
-                    └───────────┘               │
-                                                ▼
-┌────────────┐      ┌───────────┐         ┌───────────┐
-│            │◄─────┤ Snowflake │◄────────┤ AWS Glue  │
-│ Dashboard  │      │           │         │  Catalog  │
-└────────────┘      └───────────┘         └───────────┘
 
 ## Implementation Status
 
@@ -28,7 +18,8 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 - ✅ Data extraction from source
 - ✅ S3 upload functionality
 - ✅ Local file cleanup after upload
-- ✅ AWS Glue cataloging (in progress)
+- ✅ AWS Glue cataloging 
+- ⬜ Data Loading to warehouse 
 - ⬜ Data transformation layer
 - ⬜ Analytics and dashboard implementation
 
