@@ -42,10 +42,7 @@
         <mxCell id="BS5HTjioKo4mizjiNvLl-21" value="" style="shape=singleArrow;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="223" y="293" width="90" height="53" as="geometry" />
         </mxCell>
-        <mxCell id="BS5HTjioKo4mizjiNvLl-22" value="" style="verticalLabelPosition=bottom;aspect=fixed;html=1;shape=mxgraph.salesforce.web2;" vertex="1" parent="1">
-          <mxGeometry x="84" y="180" width="71" height="71" as="geometry" />
-        </mxCell>
-        <mxCell id="BS5HTjioKo4mizjiNvLl-23" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;data.cms.com&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="BS5HTjioKo4mizjiNvLl-23" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;data.cms.gov&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="96" y="256" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BS5HTjioKo4mizjiNvLl-25" value="" style="shape=singleArrow;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -114,6 +111,9 @@
         </mxCell>
         <mxCell id="BS5HTjioKo4mizjiNvLl-62" value="metadata analytics" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="1">
           <mxGeometry x="1010" y="500" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BS5HTjioKo4mizjiNvLl-64" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/CustomDomain.svg;" vertex="1" parent="1">
+          <mxGeometry x="101" y="214" width="50" height="42" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

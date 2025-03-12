@@ -4,13 +4,17 @@ A data engineering project focused on processing and analyzing synthetic Medicar
 
 ## Project Overview
 
-This project implements an ELT (Extract, Load, Transform) pipeline for Medicare healthcare data using Apache Airflow, AWS S3, and data cataloging. The pipeline efficiently processes beneficiary (patient) data, claims data, and prescription drug events.
+This project implements an ELT (Extract, Load, Transform) pipeline for Medicare healthcare data from cmd.gov to a data warehouse to enable advanced transformations and analytics on the data.
 
+## Project Objectives
+
+- Design and implement full data pipline, from extracring raw data to analytical available high grade data.
+- Get experience with data tools such Airflow, Snowlake and DBT.
+- Implement advances queries on the data to draw meaningful conclussions, both in healthcare and business oriented questions.
 
 ## Data Pipeline Architecture
 
 ![Medicare Data Pipeline Architecture](docs/images/project_design.png)
-
 
 ## Implementation Status
 
@@ -18,50 +22,60 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 - ✅ Data extraction from source
 - ✅ S3 upload functionality
 - ✅ Local file cleanup after upload
-- ✅ AWS Glue cataloging 
-- ⬜ Data Loading to warehouse 
+- ✅ AWS Glue cataloging
+- ⬜ Data Loading to warehouse
 - ⬜ Data transformation layer
 - ⬜ Analytics and dashboard implementation
-
+  
 ## Next Steps
 
 1. Complete AWS Glue cataloging implementation
 2. Set up Athena for SQL-based data exploration
-3. Evaluate data warehouse options (Redshift vs. Snowflake)
-4. Implement data transformation layer
-5. Create analytical dashboards
+3. Study Snowflake as data warehouse
+4. Implement load to warehouse
+5. Implement data transformation layer
+6. Create analytical dashboards
+
 
 ## From now here it's more "association sun"
+
+
 
 
 ### Optional Analytical Goals
 
 1. **Demographics Analysis**
+
    - Analyze beneficiary age distribution, gender ratios, and geographic distribution
    - Identify demographic trends across different years (2015-2025)
    - Visualize population health characteristics by region
 
 2. **Healthcare Utilization Patterns**
+
    - Quantify service utilization rates across different claim types
    - Analyze the relationship between demographics and service utilization
    - Identify seasonal patterns in healthcare service usage
 
 3. **Cost and Spending Analysis**
+
    - Calculate average costs per beneficiary across different service categories
    - Identify high-cost procedures and services
    - Analyze cost variations by geographic region and provider type
 
 4. **Chronic Condition Analysis**
+
    - Identify prevalence of chronic conditions in the beneficiary population. Emphasis on diabetes as example
    - Analyze healthcare utilization patterns for patients with specific conditions
    - Explore the relationship between multiple chronic conditions and healthcare costs
 
 5. **Provider Performance Metrics**
+
    - Develop metrics for provider efficiency and quality
    - Compare utilization patterns across different provider types
    - Identify outlier providers in terms of cost or service volume
 
 6. **Prescription Drug Analysis**
+
    - Analyze prescription drug utilization and costs
    - Identify frequently prescribed medications
    - Examine relationships between diagnoses and prescription patterns
@@ -79,12 +93,14 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 The project currently works with the following synthetic Medicare data files:
 
 ### Beneficiary Files
+
 - Multiple yearly snapshots (2015-2025)
 - ~185 columns per file including demographics, eligibility, and enrollment data
 
 ### Claims Files
+
 - `carrier.csv` - Professional services claims
-- `inpatient.csv` - Hospital inpatient claims 
+- `inpatient.csv` - Hospital inpatient claims
 - `outpatient.csv` - Hospital outpatient claims
 - `dme.csv` - Durable Medical Equipment claims
 - `hha.csv` - Home Health Agency claims
@@ -92,6 +108,7 @@ The project currently works with the following synthetic Medicare data files:
 - `snf.csv` - Skilled Nursing Facility claims
 
 ### Part D (Prescription Drug) Files
+
 - `pde.csv` - Prescription Drug Events
 - Contains detailed information about medications, pharmacy dispensing, and drug costs
 - Links to beneficiary data via beneficiary identifiers
@@ -101,12 +118,14 @@ The project currently works with the following synthetic Medicare data files:
 ### Core Entities
 
 1. **Beneficiary**
+
    - Demographics (age, gender, race)
    - Geographic information (state, county, zip)
    - Enrollment periods
    - Coverage details
 
 2. **Claims**
+
    - Various types (carrier, inpatient, outpatient, etc.)
    - Service details
    - Diagnosis and procedure codes
@@ -122,23 +141,27 @@ The project currently works with the following synthetic Medicare data files:
 ## Data Pipeline1: ELT Approach
 
 ### Data Sources
+
 - Synthetic Medicare RIF (Research Identifiable Files) datasets in CSV format
 - Beneficiary enrollment data (yearly snapshots 2015-2025)
 - Claims data (carrier, inpatient, outpatient, DME, HHA, hospice, SNF)
 - Part D prescription drug events data
 
 ### Target Systems
+
 - **Data Lake**: AWS S3 for raw data storage and organization
 - **Data Warehouse**: Snowflake for structured data storage and transformation
 
 ### ELT Process
 
 1. **Extract**
+
    - Pull Medicare CSV files from source locations
    - Validate file structure and completeness
    - Track extraction metadata (timestamps, file details)
 
 2. **Load**
+
    - Load raw Medicare files directly into S3 data lake
    - Organize by data category, year, and file type
    - Maintain original data integrity
@@ -146,11 +169,11 @@ The project currently works with the following synthetic Medicare data files:
 3. **Transform**
    - Perform transformations in Snowflake using dbt
    - Create healthcare-specific data models:
-     * Beneficiary dimension
-     * Provider dimension
-     * Claims fact tables
-     * Prescription drug fact tables
-     * Medicare-specific analytical views
+     - Beneficiary dimension
+     - Provider dimension
+     - Claims fact tables
+     - Prescription drug fact tables
+     - Medicare-specific analytical views
    - Generate derived metrics and aggregations
 
 ## Getting Started
@@ -171,7 +194,8 @@ cd medicare_data_project
 
 # Create and activate a virtual environment
 python -m venv venv
-source venv/bin/activate  
+source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+```
