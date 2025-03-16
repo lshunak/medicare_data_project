@@ -49,33 +49,11 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 - Schema creation - columns names translation
 - Goals: Efficient data loading, schema consistency, data quality checks
   
-
 ### Transform
-
 - Platform: Snowflake with dbt
 - Approach: SQL-based transformations
 - Goals: Data quality checks, schema consistency, analytics-ready tables
 
-## Implementation Status   
-   
-- ✅ Airflow DAG setup and configuration
-- ✅ Data extraction from source
-- ✅ S3 upload functionality
-- ✅ Local file cleanup after upload
-- ✅ AWS Glue cataloging
-- ⬜ Data loading to warehouse
-- ⬜ Data transformation layer
-- ⬜ Analytics and dashboard implementation
-- ⬜ Containerization and deployment
-- ⬜ Optional: Data streaming setup
-
-## Next coming Steps
-
-1. Set up Athena for SQL-based data exploration
-2. Study Snowflake as data warehouse
-3. Implement load to warehouse
-4. Implement data transformation layer
-5. Create analytical dashboards
 
 
 ## Data Files
