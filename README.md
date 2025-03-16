@@ -32,6 +32,7 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 
 ![Medicare Data Pipeline Architecture](docs/images/project_design.png)
 
+
 ## Data Pipeline: ELT Approach
 
 ### Extract and Catalog
@@ -53,7 +54,25 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 - Platform: Snowflake with dbt
 - Approach: SQL-based transformations
 - Goals: Data quality checks, schema consistency, analytics-ready tables
+  
+  
+### Core Technologies
 
+**Apache Airflow** - orchestrates the workflows. It offers robust scheduling with Python flexibility and AWS integration, ideal for managing complex task dependencies.
+
+**AWS S3** - serves as data lake. It is cost-effective for large datasets, has seamless integration with AWS services, and strong durability guarantees for the raw data.
+
+**AWS Glue** - handles cataloging and ETL operations with reduced overhead due to its serverless architecture, while automatically discovering schemas and efficiently converting Medicare CSV files to Parquet format.
+
+**Parquet Format** - optimizes the raw data storage by providing 2-4x better query performance through columnar storage, reducing storage costs with compression, and enabling partition pruning for faster loading to the data warehouse.
+
+**Snowflake** - Data warehouse that enables:
+- Separation of storage and compute for optimal cost management
+- Auto-suspension capabilities that reduce costs by ~40% compared to always-on solutions
+- Superior performance for complex analytical queries on healthcare data
+- Simple workload isolation that supports concurrent analyst and data scientist access
+
+**dbt (data build tool)** - powers the transformations due to its SQL-based approach that simplifies development, built-in testing for data quality, and automated documentation for Medicare data lineage.
 
 
 ## Data Files
