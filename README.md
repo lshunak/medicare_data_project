@@ -42,7 +42,7 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 - Validation: File integrity and structure verification
 - intermediate storage: Local filesystem
 - Destination: AWS S3 data lake
-- Cataloging: AWS Glue for schema discovery
+- Cataloging: AWS Glue for schema discovery and and conversion to Parquet format
   
 ### Load
 - Platform: Snowflake
@@ -62,7 +62,7 @@ This project implements an ELT (Extract, Load, Transform) pipeline for Medicare 
 
 **AWS S3** - serves as data lake. It is cost-effective for large datasets, has seamless integration with AWS services, and strong durability guarantees for the raw data.
 
-**AWS Glue** - handles cataloging and ETL operations with reduced overhead due to its serverless architecture, while automatically discovering schemas and efficiently converting Medicare CSV files to Parquet format.
+**AWS Glue** - handles data cataloging and format optimization with reduced overhead due to its serverless architecture. It automatically discovers schemas and converts Medicare CSV files to Parquet for efficient storage and querying, supporting the ELT approach where transformations are performed in Snowflake.
 
 **Parquet Format** - optimizes the raw data storage by providing 2-4x better query performance through columnar storage, reducing storage costs with compression, and enabling partition pruning for faster loading to the data warehouse.
 

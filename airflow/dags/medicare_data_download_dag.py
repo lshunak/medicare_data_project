@@ -1,12 +1,12 @@
 """
 Medicare Data Download, Extract, and S3 Upload DAG
 -------------------------------------------------
-Downloads Medicare data from CMS.gov, extracts files locally, 
-then uploads individual files to S3.
+Downloads Medicare data from CMS.gov, extracts files locally, uploads to S3,
+converts to Parquet, and catalogs for data lake usage.
 
 Triggering: Manual only (no schedule)
 Author: lshunak
-Date: 2025-03-11
+Date: 2025-03-20
 """
 
 from airflow import DAG
