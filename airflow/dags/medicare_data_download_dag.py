@@ -13,8 +13,10 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
+from airflow.providers.amazon.aws.sensors.glue import GlueJobSensor  # Add this import
 from airflow.utils.dates import days_ago
 from airflow.providers.amazon.aws.operators.glue_crawler import GlueCrawlerOperator
+from airflow.providers.amazon.aws.operators.glue import GlueJobOperator
 import os
 import requests
 import logging
@@ -49,6 +51,7 @@ DATA_SOURCES = {
 }
 
 BASE_DIR = os.path.expanduser('~/Documents/medicare_data_project/data/raw')
+PROJECT_DIR = os.path.expanduser('~/Documents/medicare_data_project')
 S3_BUCKET = 'lshunak-cms-bucket'  
 
 # task functions
@@ -314,6 +317,42 @@ def cleanup_part_d_data(**kwargs):
         logger.error(f"Error cleaning up {output_dir}: {str(e)}")
         raise
 
+# Add this function after your other task functions
+def upload_glue_script(**kwargs):
+    """Upload Glue ETL script to S3"""
+    try:
+        s3_hook = S3Hook()
+        
+        # Fix the script path to use the project directory
+        script_local_path = os.path.join(
+            PROJECT_DIR,  # Using the existing PROJECT_DIR constant
+            'scripts',
+            'convert_to_parquet.py'
+        )
+        
+        # Create scripts directory if it doesn't exist
+        os.makedirs(os.path.dirname(script_local_path), exist_ok=True)
+        
+        logger.info(f"Uploading Glue script from {script_local_path}")
+        
+        # Check if script exists
+        if not os.path.exists(script_local_path):
+            raise FileNotFoundError(f"Glue script not found at {script_local_path}")
+            
+        s3_hook.load_file(
+            filename=script_local_path,
+            key='scripts/convert_to_parquet.py',
+            bucket_name=S3_BUCKET,
+            replace=True
+        )
+        
+        logger.info("Successfully uploaded Glue script to S3")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Error uploading Glue script: {str(e)}")
+        raise
+
 # Define default arguments
 default_args = {
     'owner': 'lshunak',
@@ -335,16 +374,16 @@ with DAG(
     tags=['medicare', 'download', 'cms', 's3'],
 ) as dag:
 
-    # Task 0: Create base directory
-    create_base_dir = BashOperator(
-        task_id='create_base_directory',
-        bash_command=f'mkdir -p {BASE_DIR}',
-    )
-    
     # Create data subdirectories
     create_subdirs = BashOperator(
         task_id='create_data_subdirectories',
         bash_command=f'mkdir -p {BASE_DIR}/beneficiary {BASE_DIR}/claims {BASE_DIR}/part_d',
+    )
+
+    # Add this task in your DAG definition after create_subdirs
+    upload_script = PythonOperator(
+        task_id='upload_glue_script',
+        python_callable=upload_glue_script,
     )
 
     # Beneficiary data tasks
@@ -409,30 +448,149 @@ with DAG(
         trigger_rule='all_success',  # Only run if upload succeeds
     )
 
-    catalog_all_data = GlueCrawlerOperator(
-        task_id='catalog_medicare_data',
+    # Create a Glue job for CSV to Parquet conversion
+    convert_claims_to_parquet = GlueJobOperator(
+        task_id='convert_claims_to_parquet',
+        job_name='medicare_claims_to_parquet',  # This job must exist in AWS Glue
+        script_location=f's3://{S3_BUCKET}/scripts/convert_to_parquet.py',
+        script_args={
+            '--source_path': f's3://{S3_BUCKET}/raw/claims/',
+            '--target_path': f's3://{S3_BUCKET}/parquet/claims/',
+            '--file_format': 'csv',
+            '--delimiter': '|'  # Medicare data uses pipe delimiter
+        },
+        aws_conn_id='aws_default',
+        create_job_kwargs={
+            'GlueVersion': '3.0',
+            'WorkerType': 'G.1X',
+            'NumberOfWorkers': 10,
+            'MaxRetries': 2,
+            'Timeout': 60,  # 60 minutes timeout
+            'Role': 'AWSGlueServiceRole-MedicareCatalog',
+            'Command': {
+                'Name': 'glueetl',
+                'ScriptLocation': f's3://{S3_BUCKET}/scripts/convert_to_parquet.py',
+                'PythonVersion': '3'
+            }
+        }
+    )
+
+    convert_beneficiary_to_parquet = GlueJobOperator(
+        task_id='convert_beneficiary_to_parquet',
+        job_name='medicare_beneficiary_to_parquet',
+        script_location=f's3://{S3_BUCKET}/scripts/convert_to_parquet.py',
+        script_args={
+            '--source_path': f's3://{S3_BUCKET}/raw/beneficiary/',
+            '--target_path': f's3://{S3_BUCKET}/parquet/beneficiary/',
+            '--file_format': 'csv',
+            '--delimiter': '|'
+        },
+        aws_conn_id='aws_default',
+        create_job_kwargs={
+            'GlueVersion': '3.0',
+            'WorkerType': 'G.1X',
+            'NumberOfWorkers': 10,
+            'MaxRetries': 2,
+            'Timeout': 60,
+            'Role': 'AWSGlueServiceRole-MedicareCatalog'
+        }
+    )
+
+    convert_part_d_to_parquet = GlueJobOperator(
+        task_id='convert_part_d_to_parquet',
+        job_name='medicare_part_d_to_parquet',
+        script_location=f's3://{S3_BUCKET}/scripts/convert_to_parquet.py',
+        script_args={
+            '--source_path': f's3://{S3_BUCKET}/raw/part_d/',
+            '--target_path': f's3://{S3_BUCKET}/parquet/part_d/',
+            '--file_format': 'csv',
+            '--delimiter': '|'
+        },
+        aws_conn_id='aws_default',
+        create_job_kwargs={
+            'GlueVersion': '3.0',
+            'WorkerType': 'G.1X',
+            'NumberOfWorkers': 5,  # Fewer workers for smaller Part D data
+            'MaxRetries': 2,
+            'Timeout': 60,
+            'Role': 'AWSGlueServiceRole-MedicareCatalog'
+        }
+    )
+
+    # Replace all three crawlers with one
+    catalog_parquet_data = GlueCrawlerOperator(
+        task_id='catalog_all_parquet',
         aws_conn_id='aws_default',
         config={
-            'Name': 'medicare_data_crawler',
+            'Name': 'medicare_parquet_crawler',
             'Role': 'AWSGlueServiceRole-MedicareCatalog',
             'DatabaseName': 'medicare_catalog',
+            'TablePrefix': 'parquet_',  # Will create tables like parquet_claims, parquet_beneficiary, etc.
+            'Configuration': '''
+            {
+                "Version": 1.0,
+                "CrawlerOutput": {
+                    "Tables": {"AddOrUpdateBehavior": "MergeNewColumns"}
+                },
+                "Grouping": {
+                    "TableGroupingPolicy": "CombineCompatibleSchemas"
+                }
+            }
+            ''',
             'Targets': {
                 'S3Targets': [
-                    {'Path': f's3://{S3_BUCKET}/raw/'},  # This will crawl all subdirectories
+                    {'Path': f's3://{S3_BUCKET}/parquet/'}  # Crawl all Parquet data
                 ]
             }
         }
     )
 
-    # Define task dependencies
-    create_base_dir >> create_subdirs
-    
+    # Replace the existing sensors with:
+    wait_for_claims_conversion = GlueJobSensor(
+        task_id='wait_for_claims_conversion',
+        job_name='medicare_claims_to_parquet',
+        run_id="{{ task_instance.xcom_pull(task_ids='convert_claims_to_parquet', key='return_value') }}",
+        aws_conn_id='aws_default',
+        poke_interval=60,  # Check every minute
+        timeout=3600,  # Timeout after 1 hour
+    )
+
+    wait_for_beneficiary_conversion = GlueJobSensor(
+        task_id='wait_for_beneficiary_conversion',
+        job_name='medicare_beneficiary_to_parquet',
+        run_id="{{ task_instance.xcom_pull(task_ids='convert_beneficiary_to_parquet', key='return_value') }}",
+        aws_conn_id='aws_default',
+        poke_interval=60,
+        timeout=3600,
+    )
+
+    wait_for_part_d_conversion = GlueJobSensor(
+        task_id='wait_for_part_d_conversion',
+        job_name='medicare_part_d_to_parquet',
+        run_id="{{ task_instance.xcom_pull(task_ids='convert_part_d_to_parquet', key='return_value') }}",
+        aws_conn_id='aws_default',
+        poke_interval=60,
+        timeout=3600,
+    )
+
+
+    # Initial setup dependencies - now start with create_subdirs
+    create_subdirs >> upload_script
+
     # Beneficiary workflow
-    create_subdirs >> download_beneficiary >> extract_beneficiary >> upload_beneficiary >> [cleanup_beneficiary, catalog_all_data]
-    
+    create_subdirs >> download_beneficiary >> extract_beneficiary >> upload_beneficiary
+    upload_beneficiary >> convert_beneficiary_to_parquet >> wait_for_beneficiary_conversion
+    wait_for_beneficiary_conversion >> catalog_parquet_data >> cleanup_beneficiary
+
     # Claims workflow
-    create_subdirs >> download_claims >> extract_claims >> upload_claims >> [cleanup_claims, catalog_all_data]
+    create_subdirs >> download_claims >> extract_claims >> upload_claims
+    upload_claims >> convert_claims_to_parquet >> wait_for_claims_conversion
+    wait_for_claims_conversion >> catalog_parquet_data >> cleanup_claims
+
+    # Part D workflow
+    create_subdirs >> download_part_d >> upload_part_d
+    upload_part_d >> convert_part_d_to_parquet >> wait_for_part_d_conversion
+    wait_for_part_d_conversion >> catalog_parquet_data >> cleanup_part_d
     
-    # Part D workflow (direct CSV, no extraction needed)
-    create_subdirs >> download_part_d >> upload_part_d >> [cleanup_part_d, catalog_all_data]
-    
+    # Add these lines after your existing dependencies
+    upload_script >> [convert_claims_to_parquet, convert_beneficiary_to_parquet, convert_part_d_to_parquet]
