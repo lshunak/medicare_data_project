@@ -1,0 +1,37 @@
+# models/_models.yml
+version: 2
+
+models:
+  - name: base_beneficiaries
+    description: "Base layer for Medicare beneficiary data"
+    columns:
+      - name: bene_id
+        description: "Unique beneficiary identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: beneficiaries
+    description: "Cleaned and enhanced beneficiary data"
+    columns:
+      - name: bene_id
+        description: "Unique beneficiary identifier"
+        tests:
+          - unique
+          - not_null
+      - name: age
+        description: "Calculated age of beneficiary"
+        tests:
+          - not_null
+
+  - name: beneficiary_demographics
+    description: "Aggregated demographic statistics by state and gender"
+    columns:
+      - name: state_cd
+        description: "State code"
+        tests:
+          - not_null
+      - name: beneficiary_count
+        description: "Count of beneficiaries"
+        tests:
+          - not_null

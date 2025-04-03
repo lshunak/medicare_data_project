@@ -31,6 +31,7 @@ var/
 # Virtual environments
 venv/
 ENV/
+medicare-env/
 
 # IDE specific files
 .idea/
@@ -68,6 +69,16 @@ config/local.yaml
 *.tfstate
 *.tfstate.*
 *.tfvars
+
+
+# dbt specific
+dbt_packages/
+dbt_modules/
+logs/
+target/
+profiles.yml
+**/.DS_Store
+dbt.log
 
 # Build output
 target/

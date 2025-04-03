@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: medicare_raw
+    database: medicare_raw_db
+    schema: bronze
+    tables:
+      - name: beneficiaries
+        columns:
+          - name: bene_id
+            tests:
+              - unique
+              - not_null
+      
+      - name: carrier
+        columns:
+          - name: clm_id
+            tests:
+              - unique
+              - not_null
+      
+      - name: pde
+        columns:
+          - name: pde_id
+            tests:
+              - unique
+              - not_null
