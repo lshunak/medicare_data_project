@@ -12,7 +12,7 @@
 - ✅ Local file cleanup after upload
 - ✅ Parquet conversion
 - ✅ AWS Glue cataloging
-- ⬜ Data loading to warehouse
+- 🔄 Data loading to warehouse (In Progress)
 - ⬜ Data transformation layer
 - ⬜ Analytics and dashboard implementation
 - ⬜ Containerization and deployment
@@ -25,8 +25,9 @@
   - ✅ Set up AWS Glue catalog for schema discovery
   - ✅ Set up partitioning by year
   - ⬜ Create Athena views for ad-hoc analysis
-- ⬜ Create data warehouse schema (Snowflake)
-  - ⬜ Create load process from S3 to warehouse
+- 🔄 Create data warehouse schema (Snowflake)
+  - ✅ Set up Snowflake environment
+  - 🔄 Create load process from S3 to warehouse (In Progress)
   - ⬜ Set up transformation layer for analytics
 - ⬜ Create dashboard for Medicare data insights
 - ⬜ Schedule monthly data refresh process
@@ -53,6 +54,14 @@
   - `claims` - Partitioned by year
   - `part_d` - Partitioned by year
 
+## Snowflake Environment Status
+- **Warehouse**: MEDICARE_DEV_WH (XSMALL, Auto-suspend 300s)
+- **Databases**:
+  - MEDICARE_BRONZE_DB
+  - MEDICARE_SILVER_DB
+  - MEDICARE_GOLD_DB 
+- **Current Focus**: Implementing bronze layer loading using external tables
+  
 ## Deployment Notes
 - Running in local Airflow instance on Linux (Ubuntu)
 - AWS connection ID set up as `aws_default` with proper permissions
