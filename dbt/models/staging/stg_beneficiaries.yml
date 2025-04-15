@@ -20,4 +20,4 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['M', 'F']
+              values: ['1', '2']

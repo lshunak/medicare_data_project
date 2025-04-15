@@ -1,11 +1,11 @@
 SELECT
     -- Core Identifiers
-    $1:BENE_ID::VARCHAR(16) as beneficiary_id,
+    $1:BENE_ID::VARCHAR(20) as beneficiary_id,
     
     -- Demographics
     $1:BENE_BIRTH_DT::DATE as birth_date,
     $1:BENE_DEATH_DT::DATE as death_date,
-    $1:BENE_SEX_IDENT_CD::VARCHAR(1) as gender,
+    $1:SEX_IDENT_CD::VARCHAR(1) as gender,
     $1:BENE_RACE_CD::VARCHAR(1) as race_code,
     $1:BENE_CNTY_CD::VARCHAR(3) as county_code,
     $1:BENE_STATE_CD::VARCHAR(2) as state_code,

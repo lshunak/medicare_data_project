@@ -4,7 +4,7 @@ models:
   - name: stg_part_d_events
     description: "Standardized Medicare Part D prescription drug events"
     columns:
-      - name: event_id
+      - name: prescription_event_id
         description: "Unique identifier for each prescription drug event"
         tests:
           - unique
