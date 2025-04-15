@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_beneficiaries
+    description: "Standardized Medicare beneficiary demographic information"
+    columns:
+      - name: beneficiary_id
+        description: "Unique identifier for each Medicare beneficiary"
+        tests:
+          - unique
+          - not_null
+      
+      - name: birth_date
+        description: "Beneficiary's date of birth"
+        tests:
+          - not_null
+
+      - name: gender
+        description: "Beneficiary's gender identifier (M/F)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['M', 'F']

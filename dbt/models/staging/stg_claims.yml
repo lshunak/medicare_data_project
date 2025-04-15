@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_claims
+    description: "Standardized Medicare claims data"
+    columns:
+      - name: claim_id
+        description: "Unique identifier for each claim"
+        tests:
+          - unique
+          - not_null
+
+      - name: beneficiary_id
+        description: "Foreign key to stg_beneficiaries"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_beneficiaries')
+              field: beneficiary_id
+      - name: claim_type
+        description: "{{ claim_type_description }}"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['CAR', 'INP', 'OUT', 'DME', 'HHA', 'HSP', 'SNF']

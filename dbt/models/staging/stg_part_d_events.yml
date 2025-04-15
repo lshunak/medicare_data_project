@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg_part_d_events
+    description: "Standardized Medicare Part D prescription drug events"
+    columns:
+      - name: event_id
+        description: "Unique identifier for each prescription drug event"
+        tests:
+          - unique
+          - not_null
+
+      - name: beneficiary_id
+        description: "Foreign key to stg_beneficiaries"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_beneficiaries')
+              field: beneficiary_id
