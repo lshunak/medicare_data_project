@@ -17,9 +17,10 @@ models:
           - relationships:
               to: ref('stg_beneficiaries')
               field: beneficiary_id
-      - name: claim_type
+      - name: claim_type_cd
         description: "{{ claim_type_description }}"
         tests:
           - not_null
           - accepted_values:
-              values: ['CAR', 'INP', 'OUT', 'DME', 'HHA', 'HSP', 'SNF']
+              values: ['10', '20', '30', '40', '50', '60', '61', '71', '72']
+              quote: false
