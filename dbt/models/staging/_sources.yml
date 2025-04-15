@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: medicare_raw
+    database: MEDICARE_RAW_DB
+    schema: PUBLIC
+    description: "Medicare data from external tables (Bronze layer)"
+    tables:
+      - name: BENEFICIARY_EXTERNAL
+        description: "Raw Medicare beneficiary demographic information"
+      - name: CLAIMS_EXTERNAL
+        description: "Raw Medicare claims data"
+      - name: PART_D_EVENTS_EXTERNAL
+        description: "Raw Medicare Part D prescription drug events"

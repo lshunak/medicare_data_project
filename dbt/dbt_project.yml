@@ -10,6 +10,7 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+target-path: "target"
 
 clean-targets:
   - "target"
@@ -18,12 +19,9 @@ clean-targets:
 
 models:
   medicare_analytics:
-    # Bronze layer - external tables pointing to S3
-    bronze:
-      +materialized: external  # This tells dbt these are external tables
-      +schema: bronze
-    
-    # Silver layer - cleaned and standardized data
+    staging:
+      +materialized: view
     silver:
       +materialized: table
-      +schema: silver
+    gold:
+      +materialized: table
