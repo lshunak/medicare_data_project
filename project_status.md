@@ -12,25 +12,46 @@
 - ✅ Local file cleanup after upload
 - ✅ Parquet conversion
 - ✅ AWS Glue cataloging
-- 🔄 Data loading to warehouse (In Progress)
-- ⬜ Data transformation layer
+- ✅ Data loading to warehouse (In Progress)
+- 🔄 Data transformation layer (In Progress)
+  - ✅ Staging models setup
+  - 🔄 Silver layer transformations
+  - ⬜ Gold layer dimensional models
 - ⬜ Analytics and dashboard implementation
 - ⬜ Containerization and deployment
 - ⬜ Optional: Data streaming setup
 
+## Current Focus (as of 2025-04-16)
+- Implementing dbt transformations
+  - ✅ Basic staging models created
+  - 🔄 Working on silver layer transformations
+    - Fixing duplicate beneficiaries issue
+    - Implementing data cleaning rules
+  - ⬜ Planning gold layer dimensional models
+- Testing data quality
+  - ✅ Basic column tests implemented
+  - 🔄 Working on relationship tests
+  - 🔄 Implementing data validation rules
+
 ## Next Steps
-- [x] Implement data lake architecture
-  - ✅ Configure S3 as landing zone
-  - ✅ Convert data to Parquet format
-  - ✅ Set up AWS Glue catalog for schema discovery
-  - ✅ Set up partitioning by year
-  - ⬜ Create Athena views for ad-hoc analysis
-- 🔄 Create data warehouse schema (Snowflake)
-  - ✅ Set up Snowflake environment
-  - 🔄 Create load process from S3 to warehouse (In Progress)
-  - ⬜ Set up transformation layer for analytics
-- ⬜ Create dashboard for Medicare data insights
-- ⬜ Schedule monthly data refresh process
+1. Complete silver layer transformations
+   - Standardize codes and values
+   - Implement proper SCD handling
+   - Add data quality checks
+2. Design and implement gold layer
+   - Create dimensional models
+   - Build fact tables
+   - Implement business logic
+3. Set up monitoring and documentation
+   - Add detailed model documentation
+   - Implement data quality monitoring
+   - Create lineage documentation
+
+## Known Issues
+- Duplicate beneficiary records in staging (being addressed in silver layer)
+- Some external table schema evolution needed
+- Need to implement proper SCD Type 2 handling
+
 
 ## S3 Bucket Organization
 - **Bucket Name**: lshunak-cms-bucket
@@ -54,13 +75,17 @@
   - `claims` - Partitioned by year
   - `part_d` - Partitioned by year
 
+
 ## Snowflake Environment Status
 - **Warehouse**: MEDICARE_DEV_WH (XSMALL, Auto-suspend 300s)
 - **Databases**:
-  - MEDICARE_BRONZE_DB
-  - MEDICARE_SILVER_DB
-  - MEDICARE_GOLD_DB 
-- **Current Focus**: Implementing bronze layer loading using external tables
+  - MEDICARE_RAW_DB (External tables)
+  - MEDICARE_ANALYTICS_DB (dbt transformations)
+    Schemas:
+    - STAGING (Staging models)
+    - SILVER (Silver layer transformations)
+    - GOLD (Gold layer models) 
+**Current Focus**: Implementing silver layer transformations in dbt
   
 ## Deployment Notes
 - Running in local Airflow instance on Linux (Ubuntu)
