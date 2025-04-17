@@ -3,6 +3,9 @@ version: 2
 models:
   - name: stg_beneficiaries
     description: "Standardized Medicare beneficiary demographic information"
+    config:
+      schema: staging
+      materialized: view
     columns:
       - name: beneficiary_id
         description: "Unique identifier for each Medicare beneficiary"

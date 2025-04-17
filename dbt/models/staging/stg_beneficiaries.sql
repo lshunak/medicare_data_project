@@ -1,3 +1,4 @@
+
 SELECT
     -- Core Identifiers
     $1:BENE_ID::VARCHAR(20) as beneficiary_id,

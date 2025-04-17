@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: silver_beneficiaries
+    description: "Cleaned and enriched current beneficiary records"
+    
+    columns:
+      - name: beneficiary_id
+        description: "Unique identifier for beneficiary"
+        tests:
+          - unique
+          - not_null
+
+      - name: gender
+        description: "Beneficiary gender (1=Male, 2=Female, U=Unknown)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['1', '2', 'U']
+
+      - name: race_code
+        description: "Race code (1=White, 2=Black, 3=Other, 4=Asian, 5=Hispanic, U=Unknown)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['1', '2', '3', '4', '5', 'U']

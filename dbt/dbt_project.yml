@@ -20,8 +20,11 @@ clean-targets:
 models:
   medicare_analytics:
     staging:
+      +schema: staging
       +materialized: view
     silver:
+      +schema: silver
       +materialized: table
     gold:
+      +schema: gold
       +materialized: table
